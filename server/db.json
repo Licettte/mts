@@ -1,0 +1,53 @@
+{
+  "game": [
+    {
+      "thumbnail": "https://ucarecdn.com/1c77a62e-898d-422e-b945-f94360ed8912/appleBYZS852I.svg",
+      "name": "абрикос",
+      "price": 2927,
+      "discount": 3527,
+      "rating": 4.7,
+      "id": 1
+    },
+    {
+      "thumbnail": "https://ucarecdn.com/47fc32c5-b21e-4ec2-8c38-e8f8a0d6e140/appleEarPods.svg",
+      "name": "ананас",
+      "price": 2327,
+      "discount": null,
+      "rating": 4.5,
+      "id": 2
+    },
+    {
+      "thumbnail": "https://ucarecdn.com/9bc81251-d191-4a6b-bb65-38218eb5b684/appleEarPodsinase.svg",
+      "name": "анчоус",
+      "price": 2327,
+      "discount": null,
+      "rating": 4.5,
+      "id": 3
+    },
+    {
+      "thumbnail": "https://ucarecdn.com/1c77a62e-898d-422e-b945-f94360ed8912/appleBYZS852I.svg",
+      "name": "икра",
+      "price": 2927,
+      "discount": null,
+      "rating": 4.7,
+      "id": 4
+    },
+    {
+      "thumbnail": "https://ucarecdn.com/47fc32c5-b21e-4ec2-8c38-e8f8a0d6e140/appleEarPods.svg",
+      "name": "краб",
+      "price": 2327,
+      "discount": null,
+      "rating": 4.5,
+      "id": 5
+    },
+    {
+      "thumbnail": "https://ucarecdn.com/9bc81251-d191-4a6b-bb65-38218eb5b684/appleEarPodsinase.svg",
+      "name": "белка",
+      "price": 2327,
+      "discount": null,
+      "rating": 4.5,
+      "id": 6
+    }
+  ]
+}
+
