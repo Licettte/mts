@@ -2,9 +2,11 @@ import { Layout } from 'antd';
 import { Header, Content } from 'antd/es/layout/layout';
 import { Outlet } from 'react-router-dom';
 import styled from '@emotion/styled';
-import { DARK_L_COLOR, DARK_PRIMARY_COLOR, PRIMARY_COLOR } from '@/styles/colors.ts';
+import { DARK_L_COLOR, DARK_PRIMARY_COLOR, LIGHT_COLOR, PRIMARY_COLOR } from '@/styles/colors.ts';
 import { FONT_BOLD_15 } from '@/styles/fonts.ts';
 import { Footer } from '@/components/layout/footer/Footer.tsx';
+import { SideBar } from '@/components/layout/sideBar/SideBar.tsx';
+import { Container } from '@/AppStyle.ts';
 
 
 const LayoutContainer = styled(Layout)`
@@ -31,8 +33,7 @@ const StyledHeader = styled(Header)`
 const StyledContent = styled(Content)`
     background-color: ${DARK_L_COLOR};
     flex: 1 1 auto;
-    text-align: center;
-`;
+ `;
 
 const StyledFooter = styled.footer`
     background-color: ${DARK_L_COLOR};
@@ -44,6 +45,13 @@ const StyledFooter = styled.footer`
     ${FONT_BOLD_15}
 `;
 
+const ContainerContent = styled.div`
+    color: ${LIGHT_COLOR};
+    display: flex;
+    flex-direction: row;
+  `;
+
+
 export const LayoutMain = () => {
 
   return (
@@ -54,7 +62,10 @@ export const LayoutMain = () => {
       </StyledHeader>
 
       <StyledContent>
+        <ContainerContent>
+        <SideBar/>
         <Outlet />
+        </ContainerContent>
       </StyledContent>
 
       <StyledFooter>

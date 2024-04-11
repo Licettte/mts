@@ -50,7 +50,7 @@ const styles = css`
             background-color: #4cc9f0;
             color: #fff;
             border: 1px solid #4cc9f0;
-            box-shadow: 10px 10px 100px 6px #4cc9f0;
+            box-shadow: 5px 5px 30px 6px #4cc9f0;
         }
     }
 
@@ -69,7 +69,7 @@ const styles = css`
             background-color: #4cc9f0;
             color: #fff;
             border: 1px solid #4cc9f0;
-            box-shadow: 10px 10px 100px 6px #4cc9f0;
+            box-shadow: 5px 5px 30px 6px #4cc9f0;
         }
     }
 

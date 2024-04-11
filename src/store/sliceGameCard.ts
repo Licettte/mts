@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { GameProps } from '@/components/GameCard/GameCard.tsx';
+import { GameProps } from '@/components/game/GameCard.tsx';
 import { RootState } from '@/store/store.ts';
 
 

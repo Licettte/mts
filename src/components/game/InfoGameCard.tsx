@@ -1,16 +1,16 @@
 import { useNavigate, useParams } from 'react-router';
-import {FlexStyle } from '@/styles/Flex.tsx';
+import {  FlexStyle } from '@/styles/Flex.tsx';
 import styled from '@emotion/styled';
 import { LIGHT_COLOR, PRIMARY_COLOR } from '@/styles/colors.ts';
 import { FONT_SEMI_BOLD_13,  } from '@/styles/fonts.ts';
 
 
 export const InfoGameContainer = styled(FlexStyle)`
-    border: aqua solid 1px;
-    width: 100%;
-    height: 69vh;
+    //border: aqua solid 1px;
+    width: 70%;
+    height: 70vh;
     color: ${LIGHT_COLOR};
-    ${FONT_SEMI_BOLD_13};
+    ${FONT_SEMI_BOLD_13};    
     
 `;
 export const ButtonBuyGame = styled.button`
@@ -19,6 +19,7 @@ export const ButtonBuyGame = styled.button`
     width: 100px;
     display: flex;
     justify-content: center;
+    
 `;
 
 export const InfoGameCard = () => {
@@ -31,8 +32,8 @@ export const InfoGameCard = () => {
     navigate(-1);
   };
   return (
-    <>
-      <InfoGameContainer $direction="column">
+    <InfoGameContainer $direction="column"  $align='center' $padding='18px'>
+      <InfoGameContainer $direction="column" $align='center'>
         {id}
 name
         price
@@ -40,6 +41,6 @@ name
         <ButtonBuyGame >Купить </ButtonBuyGame>
       </InfoGameContainer>
       <button style={{width:'100%'}} onClick={goBack}>Назад</button>
-    </>
+    </InfoGameContainer>
   );
 };

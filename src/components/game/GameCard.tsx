@@ -17,6 +17,7 @@ export const Wrapper = styled.div`
     }
     display: flex;
     flex-direction: column;
+align-items: center;
     padding: 15px 22px 32px;
     margin-top: 20px;
     ${FONT_SEMI_BOLD_17}

@@ -10,7 +10,7 @@ const Wrapper = styled.section`
     justify-items: center;
     margin: 0 0 32px 0;
     color: antiquewhite;
-
+    padding: 0 18px;
     @media (min-width: ${tablet}) {
         grid-template-columns: repeat(2, 1fr);
         justify-items: center;
@@ -19,7 +19,7 @@ const Wrapper = styled.section`
     @media (min-width: ${dekstop}) {
         grid-template-columns: repeat(3, 1fr);
         grid-column-gap: 2.4rem;
-        grid-row-gap: 1.2rem;
+        grid-row-gap: 3.2rem;
         margin-bottom: 3rem;
     }
 `;
