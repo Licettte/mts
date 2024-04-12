@@ -29,7 +29,10 @@ export const ActionStyle = styled.h3`
 export const PageMainGame = () => {
   const [games, setGames] = useState<GameProps[]>([]);
   const [gamesAction, setGamesAction] = useState<GameProps[]>([]);
-  const [isLoadedGame, setIsLoadedGame] = useState(false);
+  const [gamesFilter, setGamesFilter] = useState<GameProps[]>([]);
+  const [isLoadedGame, setIsLoadedGame] = useState('false');
+
+  const [linkRedirect, setLinkRedirect] = useState('');
   const [isLoadedGameAction, setIsLoadedGameAction] = useState(false);
   const [valueSearchGame, setValueSearchGame] = useState('');
 
@@ -38,7 +41,20 @@ export const PageMainGame = () => {
     axios.get(`${baseUrl}${GamesServiceEndpoints.GAMES}`).then((response) => {
       setGamesAction([...response.data]);
     });
+    // axios.get(`${baseUrl}${GamesServiceEndpoints.SEARCH}/world`).then((response) => {
+    //   setGamesFilter([...response.data]);
+    // });
+    axios
+      .get(`${baseUrl}${GamesServiceEndpoints.BUY}`, {
+        params: { priceWithoutFee: 42, username: 'lllllllll' },
+      })
+      .then((response) => {
+        // @ts-ignore
+        setLinkRedirect(response.request.responseURL);
+      });
   }, []);
+
+  console.log(linkRedirect, 'linkRedirect!!!!!!!!!!!!!');
 
   const onChangeSearchGame = (e: any) => {
     setValueSearchGame(e.target.value);
