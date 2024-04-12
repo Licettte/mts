@@ -1,5 +1,5 @@
 import { Global, css } from '@emotion/react'
-import {  DARK_L_COLOR, DARK_PRIMARY_COLOR } from '@/styles/colors.ts';
+import { DARK_L_COLOR, DARK_PRIMARY_COLOR, PRIMARY_COLOR } from '@/styles/colors.ts';
 
 export const mainFont = "'Montserrat', sans-serif";
 const styles = css`
@@ -10,6 +10,7 @@ const styles = css`
 
     body {
         margin: 0;
+        background-color: ${DARK_L_COLOR};
     }
 
     html {

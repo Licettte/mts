@@ -11,6 +11,7 @@ const Wrapper = styled.section`
     margin: 0 0 32px 0;
     color: antiquewhite;
     padding: 0 18px;
+    width: 800px;
     @media (min-width: ${tablet}) {
         grid-template-columns: repeat(2, 1fr);
         justify-items: center;

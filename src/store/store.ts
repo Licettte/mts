@@ -1,11 +1,10 @@
-import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
+import { configureStore } from '@reduxjs/toolkit';
 
-import gameReducer from './sliceGameCard.ts'
+import gameReducer from './sliceGameCard.ts';
 
 export const store = configureStore({
   reducer: {
     game: gameReducer,
-    // message: messageReducer
   },
 });
 

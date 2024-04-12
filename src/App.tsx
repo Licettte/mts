@@ -6,7 +6,7 @@ import { PageMainGame } from '@/components/game/PageMainGame.tsx';
 import { Cursor } from '@/components/cursor/Cursor.tsx';
 import { InfoGameCard } from '@/components/game/InfoGameCard.tsx';
 import { Action } from '@/components/action/Action.tsx';
-import { InfoCategory } from '@/components/layout/sideBar/InfoCategory.tsx';
+import { SideBarGenreInfo } from '@/components/layout/sideBar/SideBarGenreInfo.tsx';
 
 
 function App() {
@@ -19,7 +19,7 @@ function App() {
         <Route path={PageRoutes.LAYOUT} element={<LayoutMain />}>
           <Route index element={<PageMainGame />} />
           <Route path='/info/:id' element={<InfoGameCard />} />
-          <Route path='/category/:id' element={<InfoCategory />} />
+          <Route path='/category/:name' element={<SideBarGenreInfo />} />
           <Route path={PageRoutes.ACTION} element={<Action />} />
           <Route path="*" element="Error" />
         </Route>

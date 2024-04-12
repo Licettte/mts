@@ -8,7 +8,9 @@ export const Action = () => {
   return (
     <div style={{ color: 'white' }}>
       скидоны какие-то
-      <button style={{ width: '100%' }} onClick={goBack}>Назад</button>
+      <button style={{ width: '100%' }} onClick={goBack}>
+        Назад
+      </button>
     </div>
   );
 };
