@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { FlexStyle } from '@/styles/Flex.tsx';
 import { BRIGHT_COLOR, DARK_L_COLOR, LIGHT_COLOR, PRIMARY_COLOR } from '@/styles/colors.ts';
-import { FONT_BOLD_15, FONT_SEMI_BOLD_15 } from '@/styles/fonts.ts';
+import {  FONT_SEMI_BOLD_15 } from '@/styles/fonts.ts';
 import arrowLeft from '../../assets/left.svg?react';
 
 export const InfoGameContainer = styled(FlexStyle)`

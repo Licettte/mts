@@ -1,5 +1,5 @@
 import { Global, css } from '@emotion/react'
-import { BRIGHT_COLOR, DARK_L_COLOR, DARK_PRIMARY_COLOR, LIGHT_COLOR, PRIMARY_COLOR } from '@/styles/colors.ts';
+import { BRIGHT_COLOR, DARK_L_COLOR, DARK_PRIMARY_COLOR, LIGHT_COLOR } from '@/styles/colors.ts';
 
 export const mainFont = "'Montserrat', sans-serif";
 const styles = css`
@@ -63,7 +63,7 @@ const styles = css`
         padding: 15px 30px;
         transition: 0.2s;
         //margin-right: 100px;
-        color:  ${BRIGHT_COLOR};;
+        color: ${BRIGHT_COLOR};;
         border-radius: 15px;
 
         &:hover {

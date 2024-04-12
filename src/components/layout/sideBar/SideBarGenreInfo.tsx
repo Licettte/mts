@@ -14,7 +14,6 @@ export const SideBarGenreInfo = () => {
 
     const {genre} = useParams();
 
-
     useEffect(() => {
         setIsLoadedGame(false)
         axios.get(`${baseUrl}${GamesServiceEndpoints.GAMES}/${genre}`).then((response) => {
@@ -30,8 +29,8 @@ export const SideBarGenreInfo = () => {
         <Flex $direction='column'>
             {
                 !isLoadedGame ?
-                    <h2 style={{marginTop: '60px', marginLeft:'100px', textAlign: "center", color: BRIGHT_COLOR}}>
-                        Loading </h2>:
+                    <h2 style={{marginTop: '60px', marginLeft: '100px', textAlign: "center", color: BRIGHT_COLOR}}>
+                        Loading </h2> :
                     <Flex $direction='column'>
                         <h2 style={{marginTop: '50px', textAlign: "center", color: BRIGHT_COLOR}}>{genre}</h2>
                         <ThreeColumn>
@@ -40,7 +39,6 @@ export const SideBarGenreInfo = () => {
                             ))}
                         </ThreeColumn>
                     </Flex>
-
             }
         </Flex>
     );
