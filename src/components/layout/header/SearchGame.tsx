@@ -5,7 +5,7 @@ import { useState } from 'react';
 export const SearchGame = () => {
   const [valueSearchGame, setValueSearchGame] = useState('');
   const onSearch: SearchProps['onSearch'] = (value, _e, info) => {
-    console.log(info?.source, value);
+
   };
   const onChangeSearchGame = (e: any) => {
     setValueSearchGame(e.target.value);

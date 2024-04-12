@@ -1,5 +1,5 @@
 import { Global, css } from '@emotion/react'
-import { DARK_L_COLOR, DARK_PRIMARY_COLOR, PRIMARY_COLOR } from '@/styles/colors.ts';
+import { BRIGHT_COLOR, DARK_L_COLOR, DARK_PRIMARY_COLOR, LIGHT_COLOR, PRIMARY_COLOR } from '@/styles/colors.ts';
 
 export const mainFont = "'Montserrat', sans-serif";
 const styles = css`
@@ -44,14 +44,14 @@ const styles = css`
         font-size: 16px;
         padding: 15px 30px;
         transition: 0.2s;
-        color: #4cc9f0;
+        color: ${LIGHT_COLOR};
         border-radius: 15px;
 
         &:hover {
-            background-color: #4cc9f0;
-            color: #fff;
-            border: 1px solid #4cc9f0;
-            box-shadow: 5px 5px 30px 6px #4cc9f0;
+            background-color: ${BRIGHT_COLOR};
+            color: #000000;
+            border: 1px solid #79af2e;
+            box-shadow: 5px 5px 30px 6px #faa607;
         }
     }
 
@@ -63,14 +63,14 @@ const styles = css`
         padding: 15px 30px;
         transition: 0.2s;
         //margin-right: 100px;
-        color: #4cc9f0;
+        color:  ${BRIGHT_COLOR};;
         border-radius: 15px;
 
         &:hover {
-            background-color: #4cc9f0;
-            color: #fff;
-            border: 1px solid #4cc9f0;
-            box-shadow: 5px 5px 30px 6px #4cc9f0;
+            background-color: ${BRIGHT_COLOR};
+            color: #000000;
+            border: 1px solid #79af2e;
+            box-shadow: 5px 5px 30px 6px #faa607;
         }
     }
 

@@ -20,7 +20,7 @@ const Wrapper = styled.section`
     @media (min-width: ${dekstop}) {
         grid-template-columns: repeat(3, 1fr);
         grid-column-gap: 2.4rem;
-        grid-row-gap: 3.2rem;
+        grid-row-gap: 0;
         margin-bottom: 3rem;
     }
 `;

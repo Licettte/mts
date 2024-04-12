@@ -1,29 +1,38 @@
 import { SearchProps } from 'antd/es/input';
 import Search from 'antd/es/input/Search';
-import { useEffect, useState } from 'react';
+import { ChangeEvent, useEffect, useState } from 'react';
 import { GameCard, GameProps } from '@/components/game/GameCard.tsx';
 import { ThreeColumn } from '@/styles/ThreeColumn.tsx';
 import styled from '@emotion/styled';
 import { FlexStyle } from '@/styles/Flex.tsx';
 import { LIGHT_COLOR } from '@/styles/colors.ts';
-import axios from 'axios';
-import { baseUrl, GamesServiceEndpoints } from '@/utils/url.ts';
+import { useAppDispatch, useAppSelector } from '@/store/hooks.ts';
+import { getGame } from '@/store/service/gameApi.ts';
+import { selectGame } from '@/store/sliceGameCard.ts';
 
 export const WrapperMain = styled(FlexStyle)`
-  width: 70%;
-  color: ${LIGHT_COLOR};
-  align-items: stretch;
-  justify-content: center;
+    width: 70%;
+    color: ${LIGHT_COLOR};
+    align-items: stretch;
+    justify-content: center;
 `;
 
 export const ContentMain = styled(FlexStyle)`
-  height: 500px;
+    height: 500px;
 `;
-export const ActionStyle = styled.h3`
-  color: #baff49;
-  background-color: transparent;
-  border: none;
-  margin: 0;
+export const ActionStyle = styled.h2`
+    color: #baff49;
+    background-color: transparent;
+    border: none;
+    margin: 0;
+`;
+
+export const SearchWrapper = styled(Search)`
+    color: aliceblue;
+    & .ant-input {
+        background-color: transparent;
+        color: aliceblue;
+    }
 `;
 
 export const PageMainGame = () => {
@@ -32,31 +41,15 @@ export const PageMainGame = () => {
   const [gamesFilter, setGamesFilter] = useState<GameProps[]>([]);
   const [isLoadedGame, setIsLoadedGame] = useState('false');
 
-  const [linkRedirect, setLinkRedirect] = useState('');
   const [isLoadedGameAction, setIsLoadedGameAction] = useState(false);
   const [valueSearchGame, setValueSearchGame] = useState('');
-
-  //TODO  Game Actions
+  const dispatch = useAppDispatch();
+  const game = useAppSelector(selectGame);
   useEffect(() => {
-    axios.get(`${baseUrl}${GamesServiceEndpoints.GAMES}`).then((response) => {
-      setGamesAction([...response.data]);
-    });
-    // axios.get(`${baseUrl}${GamesServiceEndpoints.SEARCH}/world`).then((response) => {
-    //   setGamesFilter([...response.data]);
-    // });
-    axios
-      .get(`${baseUrl}${GamesServiceEndpoints.BUY}`, {
-        params: { priceWithoutFee: 42, username: 'lllllllll' },
-      })
-      .then((response) => {
-        // @ts-ignore
-        setLinkRedirect(response.request.responseURL);
-      });
+    dispatch(getGame());
   }, []);
 
-  console.log(linkRedirect, 'linkRedirect!!!!!!!!!!!!!');
-
-  const onChangeSearchGame = (e: any) => {
+  const onChangeSearchGame = (e: ChangeEvent<HTMLInputElement>) => {
     setValueSearchGame(e.target.value);
   };
 
@@ -65,26 +58,23 @@ export const PageMainGame = () => {
   });
 
   const getGames = (games: GameProps[]) => {
-    console.log(games, 'game from filter');
     return games.map((game) => <GameCard key={game.id} {...game} />);
   };
-  const onSearch: SearchProps['onSearch'] = (value, _e, info) => {
-    console.log(info?.source, value);
-  };
+
   return (
     <WrapperMain $align='stretch'>
       <ContentMain $direction='column' $align='center'>
-        <Search
+        <SearchWrapper
           size='large'
           placeholder='поиск'
           enterButton
-          onSearch={onSearch}
           onChange={onChangeSearchGame}
           style={{ width: 400, padding: '30px' }}
         />
+
         <ActionStyle>АКЦИИ</ActionStyle>
         <ThreeColumn>
-          {valueSearchGame.length ? getGames(filterGame) : getGames(gamesAction)}
+          {valueSearchGame.length ? getGames(filterGame) : getGames(game)}
         </ThreeColumn>
       </ContentMain>
     </WrapperMain>

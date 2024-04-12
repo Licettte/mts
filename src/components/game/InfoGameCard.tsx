@@ -1,57 +1,57 @@
 import { useNavigate, useParams } from 'react-router';
 import { Flex, FlexStyle } from '@/styles/Flex.tsx';
-import styled from '@emotion/styled';
-import { LIGHT_COLOR, PRIMARY_COLOR } from '@/styles/colors.ts';
-import { FONT_SEMI_BOLD_13 } from '@/styles/fonts.ts';
-import React, { useEffect, useState } from 'react';
-import { GameInfoProps, GameProps } from '@/components/game/gameType.ts';
-import img from '../../assets/SddcexaGjis.jpg';
 
-export const InfoGameContainer = styled(FlexStyle)`
-    //border: aqua solid 1px;
-    width: 70%;
-    height: 70vh;
-    color: ${LIGHT_COLOR};
-    
-`;
-export const ButtonBuyGame = styled.button`
-  color: ${LIGHT_COLOR};
-  background-color: ${PRIMARY_COLOR};
-  width: 100px;
-  display: flex;
-  justify-content: center;
-`;
-export const StyledImage = styled.img`
-  width: 250px;
-  height: 250px;
-  object-fit: cover;
-`;
-export const ItemDesc = styled.p`
-  color: ${LIGHT_COLOR};
-`;
+import { useAppSelector } from '@/store/hooks.ts';
+import { selectGame } from '@/store/sliceGameCard.ts';
+import {
+  ArrowLeftSVG,
+  ButtonBuyGame,
+  InfoGameContainer,
+  ItemDesc,
+  ItemGame,
+  ItemGameImage,
+} from '@/components/game/StyleGame.ts';
+import axios from 'axios';
+import { baseUrl, GamesServiceEndpoints } from '@/utils/url.ts';
+import { useEffect, useState } from 'react';
+import { logDOM } from '@testing-library/react';
+import {getGame} from "@/store/service/gameApi.ts";
 
 export const InfoGameCard = () => {
-  const [gameInfo, setGameInfo] = useState<GameInfoProps>({});
+  const [linkRedirect, setLinkRedirect] = useState('');
+
   const { id } = useParams();
   const navigate = useNavigate();
+  const games = useAppSelector(selectGame);
 
   const goBack = () => {
     navigate(-1);
   };
-  useEffect(() => {
-    fetch('http://localhost:8080/get/game', {
-      method: 'post',
-      body: JSON.stringify(id),
-    })
-      .then((res) => res.json())
-      .then((res: GameInfoProps) => {
-        setGameInfo(res);
-      });
-  }, []);
 
-  // const { id, name, price, image, description, developers, releaseDate, discount } = gameInfo;
+
+
+  const { name, price, image, description, developers, releaseDate, discount, images } = games.find(
+      (game) => game.id == id)||{}
+
+  const onClickBuy = () => {
+    axios
+      .get(`${baseUrl}${GamesServiceEndpoints.BUY}`, {
+        params:{ priceWithoutFee: price, username: 'the_jack_zaka' }
+      })
+      .then((response) => {
+        // @ts-ignore
+        setLinkRedirect(response.request.responseURL);
+      });
+  }
+
+  useEffect(() => {
+      if(linkRedirect.length){
+      window.location.href = linkRedirect}
+  }, [linkRedirect]);
+
+  console.log(linkRedirect, "linkRedirect");
   return (
-    <InfoGameContainer $direction='column' $align='center' $padding='18px' >
+    <InfoGameContainer $direction='column' $align='center' $padding='18px'>
       <InfoGameContainer $direction='column' $align='center'>
         {/*id {gameInfo.id}*/}
 
@@ -59,31 +59,31 @@ export const InfoGameCard = () => {
         {/*developers{gameInfo.developers.map(person=>person)},*/}
 
         <Flex $margin='60px 0 0 0'>
-          <StyledImage src={img} alt='{thumbnail}' />
+          <ItemGameImage src={images} alt='{thumbnail}' />
           <Flex $direction='column' $margin='13px 0 0 50px '>
             <ItemDesc>
               name
-              {/*{gameInfo.name}*/}
+              <ItemGame>{name ? name : ' '}</ItemGame>
             </ItemDesc>
             <ItemDesc>
               releaseDate
-              {/*{gameInfo.releaseDate},*/}
+              <ItemGame> {releaseDate}</ItemGame>
             </ItemDesc>
             <ItemDesc>
               price
-              {/*{gameInfo.price}*/}
+              <ItemGame> {price}</ItemGame>
             </ItemDesc>
-            <ItemDesc>
-              discount
-              {/*{gameInfo.discount}*/}
-            </ItemDesc>
-            <ButtonBuyGame>Купить </ButtonBuyGame>
+            <ItemDesc></ItemDesc>
+            <ArrowLeftSVG onClick={goBack} />
           </Flex>
         </Flex>
       </InfoGameContainer>
-      <button style={{ width: '100%' }} onClick={goBack}>
-        Назад
-      </button>
+
+
+        <ButtonBuyGame onClick={()=>onClickBuy()}>Купить</ButtonBuyGame>
+
+
+
     </InfoGameContainer>
   );
 };

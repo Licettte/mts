@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import { FlexStyle } from '@/styles/Flex.tsx';
-import { LIGHT_COLOR, PRIMARY_COLOR } from '@/styles/colors.ts';
+import { BRIGHT_COLOR, LIGHT_COLOR, PRIMARY_COLOR } from '@/styles/colors.ts';
 import { Link } from 'react-router-dom';
 import { GameProps } from '@/components/game/gameType.ts';
 import { GameCard } from '@/components/game/GameCard.tsx';
@@ -15,8 +15,8 @@ export const SideMenu = styled(FlexStyle)`
 
 export const LinkSideBar = styled(Link)`
   margin-bottom: 15px;
-  background-color: ${PRIMARY_COLOR};
-  color: ${LIGHT_COLOR};
+  //background-color: ${PRIMARY_COLOR};
+  color: ${BRIGHT_COLOR};
 `;
 export const TitleSideBar = styled.h3`
   text-align: center;
@@ -27,7 +27,7 @@ export const SideBarGenre = () => {
   const [genreGames, setGenreGames] = useState<GameProps[]>([]);
   const [isLoadedGenre, setIsLoadedGenre] = useState(false);
 
-  console.log(genres, 'genres');
+
   // const getGenres = (genres: GenreProps[]) => {
   //   return genres.map((genre) => <LinkSideBar to={'/category/' + 'pazzle'}>pazzle</LinkSideBar>);
   // };

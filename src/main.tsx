@@ -9,7 +9,7 @@ import { Provider } from 'react-redux';
 //..styles/config
 const config: ThemeConfig = {
     token: {
-      colorPrimary: "#276098",
+      colorPrimary: "#baff49",
       colorLink: '#df96ee',
       borderRadius: 10,
       colorBgContainer: '#f6ffed',

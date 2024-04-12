@@ -10,7 +10,7 @@ import { SideBarGenreInfo } from '@/components/layout/sideBar/SideBarGenreInfo.t
 
 
 function App() {
-  console.log(import.meta.env.VITE_BASE_URL);
+
   return (
     <>
       <GlobalStyle />
@@ -19,7 +19,7 @@ function App() {
         <Route path={PageRoutes.LAYOUT} element={<LayoutMain />}>
           <Route index element={<PageMainGame />} />
           <Route path='/info/:id' element={<InfoGameCard />} />
-          <Route path='/category/:name' element={<SideBarGenreInfo />} />
+          <Route path='/category/:genre' element={<SideBarGenreInfo />} />
           <Route path={PageRoutes.ACTION} element={<Action />} />
           <Route path="*" element="Error" />
         </Route>

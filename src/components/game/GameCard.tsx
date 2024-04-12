@@ -5,7 +5,8 @@ import { Link } from 'react-router-dom';
 import { GameProps } from '@/components/game/gameType.ts';
 import img from '@/assets/SddcexaGjis.jpg';
 import React from 'react';
-import { StyledImage } from '@/components/game/InfoGameCard.tsx';
+import { StyledImage } from '@/components/game/StyleGame.ts';
+
 
 export const Wrapper = styled.div`
   @media (max-width: ${mobile}) {
@@ -18,6 +19,13 @@ export const Wrapper = styled.div`
   margin-top: 20px;
   ${FONT_SEMI_BOLD_17}
 `;
+
+export const LinkInfo= styled(Link)`
+    margin-top: 15px;
+ width: 250px;
+    
+`;
+
 // то. что на мэйне отображется  /
 export const GameCard = (game: GameProps) => {
   const { id, name, images } = game;
@@ -30,7 +38,7 @@ export const GameCard = (game: GameProps) => {
         <StyledImage src={images
         } alt={images
         } />
-        <Link to={'/info/' + id}>Подробнее</Link>
+        <LinkInfo to={'/info/' + id}>Подробнее</LinkInfo>
       </Wrapper>
     </>
   );
