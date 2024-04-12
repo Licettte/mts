@@ -29,7 +29,6 @@ export const InfoGameCard = () => {
   };
 
 
-
   const { name, price, image, description, developers, releaseDate, discount, images } = games.find(
       (game) => game.id == id)||{}
 

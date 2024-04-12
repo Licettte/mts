@@ -27,9 +27,11 @@ export const SideBarGenreInfo = () => {
 
 
     return (
-        <>
+        <Flex $direction='column'>
             {
-                !isLoadedGame ? "Loading" :
+                !isLoadedGame ?
+                    <h2 style={{marginTop: '60px', marginLeft:'100px', textAlign: "center", color: BRIGHT_COLOR}}>
+                        Loading </h2>:
                     <Flex $direction='column'>
                         <h2 style={{marginTop: '50px', textAlign: "center", color: BRIGHT_COLOR}}>{genre}</h2>
                         <ThreeColumn>
@@ -40,6 +42,6 @@ export const SideBarGenreInfo = () => {
                     </Flex>
 
             }
-        </>
+        </Flex>
     );
 };
