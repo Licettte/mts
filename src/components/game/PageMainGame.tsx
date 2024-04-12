@@ -7,7 +7,7 @@ import {FlexStyle} from '@/styles/Flex.tsx';
 import {LIGHT_COLOR} from '@/styles/colors.ts';
 import {useAppDispatch, useAppSelector} from '@/store/hooks.ts';
 import {getGame} from '@/store/service/gameApi.ts';
-import {selectGame} from '@/store/sliceGameCard.ts';
+import {getGameInfo, selectGame} from '@/store/sliceGameCard.ts';
 import axios from "axios";
 import {baseUrl, GamesServiceEndpoints} from "@/utils/url.ts";
 
@@ -51,20 +51,18 @@ export const PageMainGame = () => {
     }, []);
 
 
+
     const onSearch = () => {
         setIsLoadedGame(false)
         axios.get(`${baseUrl}${GamesServiceEndpoints.SEARCH}/${valueSearchGame}`).then((response) => {
             setGamesFilter([...response.data]);
+            dispatch(getGameInfo([...response.data]));
             setIsLoadedGame(true)
         });
     }
     const onChangeSearchGame = (e: ChangeEvent<HTMLInputElement>) => {
         setValueSearchGame(e.target.value);
     };
-
-    const filterGame = games.filter((game) => {
-        return game.name?.toLowerCase().includes(valueSearchGame.toLowerCase());
-    });
 
     const getGames = (games: GameProps[]) => {
         return games.map((game) => <GameCard key={game.id} {...game} />);
@@ -79,7 +77,7 @@ export const PageMainGame = () => {
                     placeholder='поиск'
                     enterButton
                     onChange={onChangeSearchGame}
-                    onClick={() => onSearch()}
+                    onSearch={onSearch}
                     style={{width: 400, padding: '30px'}}
                 />
 

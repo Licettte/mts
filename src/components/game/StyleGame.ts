@@ -40,6 +40,13 @@ export const ItemGame = styled.p`
     margin-top: 5px;
 `;
 
+export const H1ItemGame = styled.h1`
+    ${FONT_SEMI_BOLD_15};
+    color: ${BRIGHT_COLOR};
+    margin: 0;
+    margin-top: 5px;
+`;
+
 export const ArrowLeftSVG = styled(arrowLeft)`
 
     width: 64px;

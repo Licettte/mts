@@ -15,7 +15,7 @@ export const SearchGame = () => {
     <div>
       <Search
         size='large'
-        placeholder='поиск'
+        placeholder='ПоиFsdfnPSDNFPKSMDFKMSDNfск'
         enterButton
         onSearch={onSearch}
         onChange={onChangeSearchGame}

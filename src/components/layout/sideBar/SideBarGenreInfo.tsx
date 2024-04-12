@@ -7,18 +7,21 @@ import {baseUrl, GamesServiceEndpoints} from "@/utils/url.ts";
 import {ThreeColumn} from "@/styles/ThreeColumn.tsx";
 import {Flex} from "@/styles/Flex.tsx";
 import {BRIGHT_COLOR} from "@/styles/colors.ts";
+import {getGameInfo} from "@/store/sliceGameCard.ts";
+import {useAppDispatch} from "@/store/hooks.ts";
 
 export const SideBarGenreInfo = () => {
     const [games, setGames] = useState<GameProps[]>([]);
     const [isLoadedGame, setIsLoadedGame] = useState(false);
 
     const {genre} = useParams();
-
+    const dispatch = useAppDispatch();
     useEffect(() => {
         setIsLoadedGame(false)
         axios.get(`${baseUrl}${GamesServiceEndpoints.GAMES}/${genre}`).then((response) => {
-            setIsLoadedGame(true)
             setGames([...response.data]);
+            dispatch(getGameInfo([...response.data]));
+            setIsLoadedGame(true)
         }).catch((error) => {
             console.log(error.config)
         });

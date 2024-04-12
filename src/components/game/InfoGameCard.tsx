@@ -1,10 +1,10 @@
 import {useNavigate, useParams} from 'react-router';
 import {Flex} from '@/styles/Flex.tsx';
 import {useAppSelector} from '@/store/hooks.ts';
-import {selectGame} from '@/store/sliceGameCard.ts';
+import {getGameInfo, selectGame} from '@/store/sliceGameCard.ts';
 import {
     ArrowLeftSVG,
-    ButtonBuyGame,
+    ButtonBuyGame, H1ItemGame,
     InfoGameContainer,
     ItemDesc,
     ItemGame,
@@ -13,20 +13,24 @@ import {
 import axios from 'axios';
 import {baseUrl, GamesServiceEndpoints} from '@/utils/url.ts';
 import {useEffect, useState} from 'react';
+import {GameProps} from "@/components/game/gameType.ts";
 
 export const InfoGameCard = () => {
     const [linkRedirect, setLinkRedirect] = useState('');
     const {id} = useParams();
     const navigate = useNavigate();
     const games = useAppSelector(selectGame);
+    const [game, setGame] = useState<GameProps>();
 
     const goBack = () => {
         navigate(-1);
     };
-
-
-    const {name, price, image, description, developers, releaseDate, discount, images} = games.find(
-        (game) => game.id == id) || {}
+    const getGame = async () => {
+        const response = await axios.get(`${baseUrl}game/${id}`);
+        return response.data;
+    }
+    const {name, price, description, developers, releaseDate, discount, images} = games.find(
+        (game) => game.id == id) || getGame()
 
     const onClickBuy = () => {
         axios
@@ -45,7 +49,7 @@ export const InfoGameCard = () => {
         }
     }, [linkRedirect]);
 
-    console.log(linkRedirect, "linkRedirect");
+    console.log(name,"name")
     return (<>{games.length ?
             <InfoGameContainer $direction='column' $align='center' $padding='18px'>
                 <InfoGameContainer $direction='column' $align='center'>
@@ -53,16 +57,15 @@ export const InfoGameCard = () => {
                         <ItemGameImage src={images} alt='{thumbnail}'/>
                         <Flex $direction='column' $margin='13px 0 0 50px '>
                             <ItemDesc>
-                                name
-                                <ItemGame>{name ? name : ' '}</ItemGame>
+                                <H1ItemGame>{name ? name : ' '}</H1ItemGame>
                             </ItemDesc>
                             <ItemDesc>
-                                releaseDate
+                                Дата релиза:
                                 <ItemGame> {releaseDate}</ItemGame>
                             </ItemDesc>
                             <ItemDesc>
-                                price
-                                <ItemGame> {price}</ItemGame>
+                                Цена:
+                                <ItemGame> {price} руб.</ItemGame>
                             </ItemDesc>
                             <ItemDesc></ItemDesc>
                             <ArrowLeftSVG onClick={goBack}/>
